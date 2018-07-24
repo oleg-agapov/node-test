@@ -37,19 +37,18 @@ app.get('/', (req, res) => {
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
 ```
 
-Add commands to `package.json` to start up the server:
+Add commands to `package.json` to start up the server (first two; others are just for example purposes):
 ```json
 "scripts": {
     "start": "nodemon src/app.js --exec  \"npm run lint && node\"",
     "lint": "eslint src/**/*.js",
-    "lint:fix": "eslint src/**/*.js  --fix"
-    //
-    // "prod": "node ./start.js",
-    // "watch": "nodemon ./start.js --ignore public/",
-    // "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name",
-    // "assets": "webpack -w --display-max-modules 0",
-    // "sample": "node ./data/load-sample-data.js",
-    // "blowitallaway": "node ./data/load-sample-data.js --delete"
+    "lint:fix": "eslint src/**/*.js  --fix",
+    "prod": "node ./start.js",
+    "watch": "nodemon ./start.js --ignore public/",
+    "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name",
+    "assets": "webpack -w --display-max-modules 0",
+    "sample": "node ./data/load-sample-data.js",
+    "blowitallaway": "node ./data/load-sample-data.js --delete"
 "now": "now -e DB_USER=@db_user -e DB_PASS=@db_pass -e NODE_ENV=\"production\" -e PORT=80"
 }
 ```
