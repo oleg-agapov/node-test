@@ -1,7 +1,7 @@
 # node-test
 
 Setting up Node.js
-```
+```bash
 npm init -f
 ```
 
