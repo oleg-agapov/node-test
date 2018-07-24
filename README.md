@@ -25,7 +25,7 @@ Setting up main packages:
 npm install --save express body-parser cors morgan
 ```
 
-"Hello World: application:
+"Hello World" application:
 ```javascript
 const express = require('express')
 const app = express()
