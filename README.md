@@ -36,3 +36,12 @@ app.get('/', (req, res) => {
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
 ```
+
+Add commands to `package.json` to start up the server:
+```json
+"scripts": {
+    "start": "nodemon src/app.js --exec  \"npm run lint && node\"",
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "eslint src/**/*.js  --fix"
+}
+```
