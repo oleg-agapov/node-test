@@ -8,8 +8,9 @@ Setting up Node.js
 npm init -f
 ```
 
-## 1. express
-## 2. nodemon, commands to package.json
+#### Express.js
+#### nodemon, commands to package.json
+#### Environment variables
 
 
 Setting up hot reload (`nodemon`) and linting package (`eslint`)
