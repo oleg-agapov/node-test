@@ -54,7 +54,10 @@ Create `variables.env` file:
 ```
 PORT=8081
 ```
-
+Install dotevn
+```
+npm install dotenv
+```
 Load variables into application using `dotenv`:
 ```javascript
 require('dotenv').config({ path: 'variables.env' });
