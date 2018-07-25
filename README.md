@@ -39,9 +39,14 @@ npm install --save-dev nodemon
 Add commands to `package.json` to start up the server (first two; others are just for example purposes):
 ```
 "scripts": {
-    "dev": "nodemon src/app.js --exec  \"node\""
+    "dev": "nodemon src/app.js"
 }
 ```
+Now run server with
+```
+npm run dev
+```
+! This will work only for back-end code (Node.js), dont's expect updating of HTML in browser !
 
 #### Environment variables
 
