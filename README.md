@@ -9,11 +9,12 @@ npm init -f
 ```
 
 ### Express.js
+
 Install express.js:
 ```
 npm install --save express
 ```
-"Hello World" application, create `src/app.js` and add:
+"Hello World" application, create `src/index.js` and add:
 ```javascript
 const express = require('express')
 const app = express()
@@ -26,10 +27,11 @@ app.listen(3000, () => console.log('Express.js app listening on port 3000!'))
 ```
 To see result run
 ```
-node app.js
+node index.js
 ```
 
 ### nodemon, commands to package.json
+
 Setting up hot reload (`nodemon`) module
 ```
 npm install --save nodemon
@@ -54,11 +56,7 @@ Load variables into application using `dotenv`:
 require('dotenv').config({ path: 'variables.env' });
 ```
 
-
-
-
-
-
+## #############
 
 
 linting package (`eslint`)
