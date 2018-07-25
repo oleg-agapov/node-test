@@ -1,7 +1,6 @@
 # node-test
 
-Node.js & NPM installation
-https://nodejs.org/en/
+Node.js & NPM installation -> https://nodejs.org/en/
 
 
 Setting up Node.js
