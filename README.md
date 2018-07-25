@@ -32,7 +32,7 @@ node src/index.js
 
 ## nodemon, commands to package.json
 
-Setting up hot reload (`nodemon`) module
+> nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected
 ```
 npm install --save-dev nodemon
 ```
