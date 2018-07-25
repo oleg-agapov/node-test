@@ -34,7 +34,7 @@ node src/index.js
 
 Setting up hot reload (`nodemon`) module
 ```
-npm install --save nodemon
+npm install --save-dev nodemon
 ```
 Add commands to `package.json` to start up the server (first two; others are just for example purposes):
 ```
