@@ -9,31 +9,11 @@ npm init -f
 ```
 
 ### Express.js
-### nodemon, commands to package.json
-#### Environment variables
-
-
-Setting up hot reload (`nodemon`) and linting package (`eslint`)
+Install express.js:
 ```
-npm install --save nodemon eslint
+npm install --save express
 ```
-
-Initializing linting
-```
-node ./node_modules/eslint/bin/eslint.js --init
-```
-
-Setting up main packages:
-* `express` - Express framework
-* `body-parser` - parsing incoming data from forms and JSON
-* `cors` - enabling CORS
-* `morgan` - logging
-
-```
-npm install --save express body-parser cors morgan
-```
-
-"Hello World" application:
+"Hello World" application, create `src/app.js` and add:
 ```javascript
 const express = require('express')
 const app = express()
@@ -44,22 +24,22 @@ app.get('/', (req, res) => {
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
 ```
-
+To see result run
+```
+```
+### nodemon, commands to package.json
+Setting up hot reload (`nodemon`) module
+```
+npm install --save nodemon
+```
 Add commands to `package.json` to start up the server (first two; others are just for example purposes):
-```json
+```
 "scripts": {
-    "start": "nodemon src/app.js --exec  \"npm run lint && node\"",
-    "lint": "eslint src/**/*.js",
-    "lint:fix": "eslint src/**/*.js  --fix",
-    "prod": "node ./start.js",
-    "watch": "nodemon ./start.js --ignore public/",
-    "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name",
-    "assets": "webpack -w --display-max-modules 0",
-    "sample": "node ./data/load-sample-data.js",
-    "blowitallaway": "node ./data/load-sample-data.js --delete",
-    "now": "now -e DB_USER=@db_user -e DB_PASS=@db_pass -e NODE_ENV=\"production\" -e PORT=80"
+    "dev": "nodemon src/app.js --exec  \"node\""
 }
 ```
+
+#### Environment variables
 
 Create `variables.env` file:
 ```
@@ -71,5 +51,29 @@ Load variables into application using `dotenv`:
 ```javascript
 require('dotenv').config({ path: 'variables.env' });
 ```
+
+hr
+
+linting package (`eslint`)
+```
+npm install --save eslint
+```
+Initializing linting
+```
+node ./node_modules/eslint/bin/eslint.js --init
+```
+
+
+Setting up main packages:
+* `body-parser` - parsing incoming data from forms and JSON
+* `cors` - enabling CORS
+* `morgan` - logging in console
+```
+npm install --save express body-parser cors morgan
+```
+
+
+
+
 
 
