@@ -19,14 +19,15 @@ const express = require('express')
 const app = express()
 
 app.get('/', (req, res) => {
-    res.send('Node-express is here!')
+    res.send('Express.js application is here!')
 })
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(3000, () => console.log('Express.js app listening on port 3000!'))
 ```
 To see result run
 ```
 ```
+
 ### nodemon, commands to package.json
 Setting up hot reload (`nodemon`) module
 ```
@@ -52,7 +53,12 @@ Load variables into application using `dotenv`:
 require('dotenv').config({ path: 'variables.env' });
 ```
 
-hr
+
+
+
+
+
+
 
 linting package (`eslint`)
 ```
