@@ -14,7 +14,7 @@ Install express.js:
 ```
 npm install --save express
 ```
-"Hello World" application, create `src/index.js` and add:
+"Hello World" application, create `server.js` and add:
 ```javascript
 const express = require('express')
 const app = express()
@@ -27,7 +27,7 @@ app.listen(3000, () => console.log('Express.js app listening on port 3000!'))
 ```
 To see result run
 ```
-node src/index.js
+node server.js
 ```
 
 ## nodemon, commands to package.json
@@ -39,7 +39,7 @@ npm install --save-dev nodemon
 Add commands to `package.json` to start up the server with auto updates:
 ```
 "scripts": {
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon"
 }
 ```
 Now run server with
@@ -52,7 +52,6 @@ npm run dev
 
 Create `variables.env` file:
 ```
-NODE_ENV=development
 PORT=8081
 ```
 
@@ -86,7 +85,7 @@ Setting up main packages:
 npm install --save express body-parser cors morgan
 ```
 
-
+NODE_ENV=development
 
 
 
