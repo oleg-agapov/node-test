@@ -36,7 +36,7 @@ node src/index.js
 ```
 npm install --save-dev nodemon
 ```
-Add commands to `package.json` to start up the server (first two; others are just for example purposes):
+Add commands to `package.json` to start up the server with auto updates:
 ```
 "scripts": {
     "dev": "nodemon src/app.js"
