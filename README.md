@@ -8,8 +8,8 @@ Setting up Node.js
 npm init -f
 ```
 
-#### Express.js
-#### nodemon, commands to package.json
+### Express.js
+### nodemon, commands to package.json
 #### Environment variables
 
 
