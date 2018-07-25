@@ -8,7 +8,7 @@ Setting up Node.js
 npm init -f
 ```
 
-### Express.js
+## Express.js
 
 Install express.js:
 ```
@@ -30,7 +30,7 @@ To see result run
 node src/index.js
 ```
 
-### nodemon, commands to package.json
+## nodemon, commands to package.json
 
 Setting up hot reload (`nodemon`) module
 ```
@@ -46,9 +46,9 @@ Now run server with
 ```
 npm run dev
 ```
-! This will work only for back-end code (Node.js), dont's expect updating of HTML in browser !
+**! This will work only for back-end code (Node.js), dont's expect updating of HTML in browser !**
 
-#### Environment variables
+## Environment variables
 
 Create `variables.env` file:
 ```
