@@ -1,5 +1,9 @@
 # node-test
 
+Node.js & NPM installation
+https://nodejs.org/en/
+
+
 Setting up Node.js
 ```bash
 npm init -f
