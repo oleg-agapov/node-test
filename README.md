@@ -49,10 +49,10 @@ npm run dev
 **! This will work only for back-end code (Node.js), dont's expect updating of HTML in browser !**
 
 ## Environment variables
-
-Create `variables.env` file:
+> Dotenv is a zero-dependency module that loads environment variables from a `.env` file into `process.env`. 
+Create `.env` file:
 ```
-PORT=8081
+PORT=3000
 ```
 Install dotevn
 ```
@@ -60,7 +60,7 @@ npm install dotenv
 ```
 Load variables into application using `dotenv`:
 ```javascript
-require('dotenv').config({ path: 'variables.env' });
+require('dotenv').config()
 ```
 
 ## d
