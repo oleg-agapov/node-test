@@ -27,7 +27,7 @@ app.listen(3000, () => console.log('Express.js app listening on port 3000!'))
 ```
 To see result run
 ```
-node index.js
+node src/index.js
 ```
 
 ### nodemon, commands to package.json
