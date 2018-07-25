@@ -61,7 +61,11 @@ Load variables into application using `dotenv`:
 require('dotenv').config({ path: 'variables.env' });
 ```
 
-## draft here #############
+## d
+## r
+## a
+## f
+## t
 
 
 linting package (`eslint`)
