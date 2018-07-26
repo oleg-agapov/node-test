@@ -3,10 +3,12 @@
 Node.js & NPM installation -> https://nodejs.org/en/
 
 
-Setting up Node.js
+## NPM initialization
+In project folder run
 ```bash
 npm init -f
 ```
+Change `main` value from `index.js` to `server.js`.
 
 ## Express.js
 
