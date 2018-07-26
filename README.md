@@ -65,6 +65,13 @@ Load variables into application using `dotenv`:
 require('dotenv').config()
 ```
 
+## Adding pug engine
+
+## Adding Vuetify
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+
 ## d
 ## r
 ## a
