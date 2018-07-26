@@ -71,7 +71,7 @@ Install pug
 npm install pug --save
 ```
 Inside `server.js` set view engine and change route:
-```
+```jacascript
 app.set('view engine', 'pug')
 
 app.get('/', function (req, res) {
@@ -87,8 +87,31 @@ html
     h1= message
 ```
 
-
 ## Adding Vuetify
+Change `index.pug` to:
+```pug
+doctype html
+html
+  head
+    title= title
+    link(href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet")
+    link(href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet")
+    meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui")
+  body
+    #app
+      v-app
+        //v-navigation-drawer
+        v-toolbar
+        v-content
+          v-container {{ message }}
+        v-footer
+
+    script(src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js")
+    script(src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js")
+    script(src="/index.helper.js")
+```
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
