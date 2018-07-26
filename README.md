@@ -66,6 +66,27 @@ require('dotenv').config()
 ```
 
 ## Adding pug engine
+Install pug
+```
+npm install pug --save
+```
+Inside `server.js` set view engine and change route:
+```
+app.set('view engine', 'pug')
+
+app.get('/', function (req, res) {
+  res.render('index', { title: 'Hey', message: 'Hello there!' })
+})
+```
+Inside `views/` create file `index.pug` and add:
+```pug
+html
+  head
+    title= title
+  body
+    h1= message
+```
+
 
 ## Adding Vuetify
 
