@@ -111,18 +111,7 @@ html
     script(src="/index.helper.js")
 ```
 
-
-
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
-
-## d
-## r
-## a
-## f
-## t
-
-
+## Linting
 linting package (`eslint`)
 ```
 npm install --save eslint
@@ -131,6 +120,22 @@ Initializing linting
 ```
 node ./node_modules/eslint/bin/eslint.js --init
 ```
+
+Add `lint` command to `package.json` and add it to `dev` command
+
+## MongoDB
+
+## App structure
+
+
+## d
+## r
+## a
+## f
+## t
+
+
+
 
 
 Setting up main packages:
