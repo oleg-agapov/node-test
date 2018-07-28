@@ -3,6 +3,7 @@
 ```
 npm install -g @vue/cli
 ```
+Probably you'll need to run it with `sudo`
 
 
 
