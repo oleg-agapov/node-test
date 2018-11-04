@@ -1,5 +1,8 @@
 # Express.js
-
+Install Express to the current project with:
+``` bash
+npm install --save express
+```
 Minimal express application:
 ``` javascript
 const express = require('express');
@@ -18,13 +21,13 @@ app.use();
 Middleware is essentially a function with three parameters – `request`, `responce` and a function which tells that express should run next middleware in line, e.g.:
 ``` javascript
 app.use((req, res, next) => {
-  console.log("In the first middleware");
+  console.log('In the first middleware');
   next(); // <-- this code will run the next middleware in chain
 });
 
 
 app.use((req, res, next) => {
-  console.log("In the second middleware");
+  console.log('In the second middleware');
 });
 ```
 If there is no need to call another middleware you should return responce. Express doesn't send any responce for you. You can send it with the next command:
@@ -38,13 +41,79 @@ Inside send you can put:
 ### Routing
 To add anew route you can use the following syntax:
 ``` javascript
-app.use("/users", (req, res, next) => {
+app.use('/users', (req, res, next) => {
   // callback function code
 });
 
-app.use("/", anotherCallbackFunction);
+app.use('/', anotherCallbackFunction);
 ```
 Here, "/" is a kind of a wildcard, meaning all routes matche it. So the order matters here. Also, if you will call next() finction in the first call instead of sending request you will fall back to "/" route callback.
+
+### Redirecting
+To perform a redirect simply send the following responce:
+``` javascript
+res.redirect('/');
+```
+
+### Parsing requests
+To access to the incoming requests data you need to do two things:
+1. to add a parser middleware
+2. use `res.body` to access the parsed data
+Install a new package middeleware:
+``` bash
+npm install --save body-parser
+```
+This parser is used for parsing data from forms. To use it you need to import it first and then register it as a middleware:
+``` javascript
+const bodyParser = require('body-parser');
+
+// you need to execute urlencoded() method of bodyParser
+app.use(bodyParser.urlencoded({extended: false}));
+```
+### HTTP methods
+If you need to handle a specific HTTP method (like GET, POST, DELETE, PUT etc.) you can use the following syntax:
+``` javascript
+app.get(...); // will handle only GET requests
+app.post(...); // will handle only POST requests
+
+app.use(...); // will handle all HTTP methods
+```
+
+### Express router
+To split the application into smaller parts we can utilize Express router.
+Create a folder /router and add a new file `home.js`. Put the following code there:
+``` javascript
+const express = require('express');
+
+const router = express.Router();
+
+router.get('/', callbackFunction);
+
+module.exports = router;
+```
+This code creates a router and add '/' route handler. Now you can import this router to main application file and use it as a middleware:
+``` javascript
+const homeRouter = require('./routes/home');
+
+app.use(homeRouter);
+```
+### Filtering routes
+To handle only specific routes with specific handler you can use filters when registering a router like this:
+``` javascript
+app.use('/admin', adminRoutes);
+```
+Handler `adminRoutes` will be executed only for routes which start with `/admin/`.
+
+### Serving HTML files
+Create a HTML file in `/views` folder (e.g. `index.html`). To render this file as a responce send it from the router like this:
+``` javascript
+const path = require('path');
+
+// in middleware
+res.sendFile(path.join(__dirname, '../', 'views', 'index.html'));
+```
+We can to send HTML with `.sendFile()` method. We need to use path module to correctly resolve path to the file in different operating systems. Additionaly we need to use `'../'` because we store router in a subfolder to `app.js`. If you call sendFile from a root folder you can omit `'../'`.
+
 
 
 
