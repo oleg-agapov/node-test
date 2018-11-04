@@ -14,7 +14,7 @@ To use middleware use need to register it with:
 ``` javascript
 app.use();
 ```
-
+### Middleware
 Middleware is essentially a function with three parameters – `request`, `responce` and a function which tells that express should run next middleware in line, e.g.:
 ``` javascript
 app.use((req, res, next) => {
@@ -35,7 +35,7 @@ Inside send you can put:
 * html code. In this case express will set header `Content-Type` for you as `text/html`
 * alternatively, most of other data will be returned as `json`
 
-Routing
+### Routing
 To add anew route you can use the following syntax:
 ``` javascript
 app.use("/users", (req, res, next) => {
