@@ -12,3 +12,4 @@ const server = http.createServer(app);
 server.listen(3000);
 ```
 
+Express is all about Middleware.
