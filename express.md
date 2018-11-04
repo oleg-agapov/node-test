@@ -112,7 +112,8 @@ const path = require('path');
 // in middleware
 res.sendFile(path.join(__dirname, '../', 'views', 'index.html'));
 ```
-We can to send HTML with `.sendFile()` method. We need to use path module to correctly resolve path to the file in different operating systems. Additionaly we need to use `'../'` because we store router in a subfolder to `app.js`. If you call sendFile from a root folder you can omit `'../'`.
+We can to send HTML with `.sendFile()` method. We need to use `path` module to correctly resolve path to the file in different operating systems. Additionaly we need to use `'../'` because we store router in a subfolder to `app.js`. If you call `sendFile` from a root folder you can omit `'../'`.
+
 
 
 
