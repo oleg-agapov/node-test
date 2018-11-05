@@ -110,10 +110,27 @@ Create a HTML file in `/views` folder (e.g. `index.html`). To render this file a
 const path = require('path');
 
 // in middleware
-res.sendFile(path.join(__dirname, '../', 'views', 'index.html'));
+res.sendFile(path.join(__dirname, '..', 'views', 'index.html'));
 ```
-We can to send HTML with `.sendFile()` method. We need to use `path` module to correctly resolve path to the file in different operating systems. Additionaly we need to use `'../'` because we store router in a subfolder to `app.js`. If you call `sendFile` from a root folder you can omit `'../'`.
+We can to send HTML with `.sendFile()` method. We need to use `path` module to correctly resolve path to the file in different operating systems. Additionaly we need to use `'..'` because we store router in a subfolder to `app.js`. If you call `sendFile` from a root folder you can omit `'..'`.
+Instead of using `__dirname` and `'..'` we can create a helper function. Create path.js file and put there the following:
+``` javascript
+const path = require('path');
 
+modules.exports = path.dirname(process.mainModule.filename);
+```
+This helper constant will always point to main execution file of our server (e.g. app.js). To use it, you need to import it and replace `__dirname` with it:
+``` javascript
+const rootDir = require('./path');
+
+// in middleware
+res.sendFile(path.join(rootDir, 'views', 'index.html'));
+```
+### Styling and serving static files
+To serve static content (such as CSS styling) you need to make it expose it first. Create a folder `/public`. Put your styling, images or JavaScript files there. Then you need to grant access to this folder, in `app.js` add middleware:
+``` javascript
+app.use(express.static(__dirname, 'public'));
+```
 
 
 
