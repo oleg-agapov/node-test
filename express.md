@@ -135,7 +135,9 @@ res.sendFile(path.join(rootDir, 'views', 'index.html'));
 ### Styling and serving static files
 To serve static content (such as CSS styling) you need to make it expose it first. Create a folder `/public`. Put your styling, images or JavaScript files there. Then you need to grant access to this folder, in `app.js` add middleware:
 ``` javascript
-app.use(express.static(__dirname, 'public'));
+const path = require('path');
+
+app.use(express.static(path.join(__dirname, '/public')));
 ```
 
 
