@@ -103,7 +103,13 @@ To handle only specific routes with specific handler you can use filters when re
 app.use('/admin', adminRoutes);
 ```
 Handler `adminRoutes` will be executed only for routes which start with `/admin/`.
-
+### 404 page
+To have 404 page just add the following code after registering all routing middlewares:
+``` javascript
+app.use((req, res, next) => {
+  res.status(404).send('Page not found');
+});
+```
 ### Serving HTML files
 Create a HTML file in `/views` folder (e.g. `index.html`). To render this file as a responce send it from the router like this:
 ``` javascript
