@@ -97,6 +97,11 @@ const homeRouter = require('./routes/home');
 
 app.use(homeRouter);
 ```
+If you want to redirect user to another page just run:
+``` javascript
+res.redirect('/');
+```
+
 ### Filtering routes
 To handle only specific routes with specific handler you can use filters when registering a router like this:
 ``` javascript
@@ -139,7 +144,20 @@ const path = require('path');
 
 app.use(express.static(path.join(__dirname, '/public')));
 ```
-
+### Adding template engine Pug(Jade)
+Install Pug into your project:
+``` bash
+npm install --save pug
+```
+Then add support of the template engine in `app.js` file with:
+``` javascript
+app.set('view engine', 'pug'); // <-- this sets a template engine
+app.set('views' , 'views'); // <-- second constant is a folder with templates
+```
+Finally, to render your template use the following syntax:
+``` javascript
+res.render('index');
+```
 
 
 
