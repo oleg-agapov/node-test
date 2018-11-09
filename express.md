@@ -158,7 +158,10 @@ Finally, to render your template use the following syntax:
 ``` javascript
 res.render('index');
 ```
-
+To pass a parameters to you template simply add a dictionary with data to `render` function:
+``` javascript
+res.render('index', {data: data});
+```
 
 
 
