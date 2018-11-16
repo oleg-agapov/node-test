@@ -163,7 +163,7 @@ To pass a parameters to you template simply add a dictionary with data to `rende
 res.render('index', {data: data});
 ```
 
-Dynamic routes and parameters
+### Dynamic routes and parameters
 To create dynamic route you need to add it to router like this:
 ``` javascript
 router.get('/products/:productId', controller);
@@ -177,5 +177,5 @@ If you want to access query parameters `?search=keyword` from URL you can use:
 const searchParam = req.query.search
 ```
 
-Models of data
+### Models of data
 
