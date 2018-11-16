@@ -177,5 +177,23 @@ If you want to access query parameters `?search=keyword` from URL you can use:
 const searchParam = req.query.search
 ```
 
-### Models of data
+### Barebone for data model
 
+``` javascript
+const User = class {
+  constructor (email, name) {
+    this.email = email;
+    this.name = name
+  }
+  
+  static save () => {
+    // save to db
+  }
+  
+  static fetchAll () => {}
+  
+  static findById (id) => {}
+}
+
+exports.module = User
+```
