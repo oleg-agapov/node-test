@@ -186,18 +186,22 @@ const User = class {
     // class constructor
   }
   
-  save () {}
+  save () {
+    // save new oblect to DB
+  }
   
-  static fetchAll () {}
+  static fetchAll () {
+    // get all oblects of this model
+  }
   
-  static getById (id) {}
-  
-  static updateById (id) {}
+  static getById (id) {
+    // retrieve object by ID
+  }
 }
 
 exports.module = User
 ```
-Then import model to controller and use:
+Then import the model to a controller and use:
 ``` javascript
 const User = require('./models/user');
 
@@ -207,4 +211,59 @@ newUser.save(); // to save newly created obkect to DB
 User.fetchAll(); // get all users
 User.getById(1); // get user with id = 1
 ```
+### Adding MySQL to data models
+First install package with connection drivers for MySQL:
+``` bash
+npm install --save mysql2
+```
+Create a connection object in `/helpers` folder in `database.js`:
+``` javascript
+const mysql = require('mysql2');
 
+const pool = mysql.CreatePool({
+  host: <HOSTNAME>',
+  user: <USERNAME>,
+  database: <DB_NAME>,
+  password: <PASSWORD>
+});
+
+module.exports = pool.promise();
+```
+This code creates a pool of connections we can use in application. Also we use promise-based connection meaning you will get an answer in Promise. Now add support of DB in models:
+``` javascript
+const db = require('../helpers/database');
+
+module.exports = class Users {
+  constructor(id, email, name) {
+    this.id = id;
+    this.email = email;
+    this.name = name;
+  }
+
+  save() {
+    return db.execute(
+      'INSERT INTO users (email, name) VALUES (?, ?)',
+      [this.email, this.name]
+    );
+  }
+  
+  static fetchAll() {
+    return db.execute('SELECT * FROM users');
+  }
+
+  static getById(id) {
+    return db.execute('SELECT * FROM users WHERE users.id = ?', [id]);
+  }
+};
+```
+Finally, to get results in controller use Promise-based `.then().catch()` syntax to get the result os the query:
+``` javascript
+// saving user
+user.save()
+  .then(() => {
+    // successfuly saved new user
+  })
+  .catch(err => {
+    // handle error `err` here
+  });
+```
