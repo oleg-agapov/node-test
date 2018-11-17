@@ -221,7 +221,7 @@ Create a connection object in `/helpers` folder in `database.js`:
 const mysql = require('mysql2');
 
 const pool = mysql.CreatePool({
-  host: <HOSTNAME>',
+  host: <HOSTNAME>,
   user: <USERNAME>,
   database: <DB_NAME>,
   password: <PASSWORD>
