@@ -179,21 +179,32 @@ const searchParam = req.query.search
 
 ### Barebone for data model
 
+In `/models` create a file with model of your data (e.g. for user):
 ``` javascript
 const User = class {
-  constructor (email, name) {
-    this.email = email;
-    this.name = name
+  constructor () {
+    // class constructor
   }
   
-  static save () => {
-    // save to db
-  }
+  save () {}
   
-  static fetchAll () => {}
+  static fetchAll () {}
   
-  static findById (id) => {}
+  static getById (id) {}
+  
+  static updateById (id) {}
 }
 
 exports.module = User
 ```
+Then import model to controller and use:
+``` javascript
+const User = require('./models/user');
+
+const newUser = new User(email, name);
+
+newUser.save(); // to save newly created obkect to DB
+User.fetchAll(); // get all users
+User.getById(1); // get user with id = 1
+```
+
