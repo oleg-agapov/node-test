@@ -267,3 +267,30 @@ user.save()
     // handle error `err` here
   });
 ```
+
+### Using Sequlize to access transactional databases
+Install `sequelize` and corresponding dialects:
+``` bash
+npm install --save sequelize
+
+npm install --save pg pg-hstore // PostgreSQL
+npm install --save mysql2       // MySQL
+npm install --save sqlite3      // SQLite
+npm install --save tedious      // MSSQL
+```
+Create a connection object in `/helpers` folder in `database.js`:
+``` javascript
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize(
+  'test-db',    // database
+  'root',       // username
+  'passw0rd',   // password
+  {
+    dialect: 'mysql',
+    host: 'localhost',
+    port: 3606
+  });
+
+module.exports = sequelize;
+```
