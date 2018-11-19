@@ -283,14 +283,23 @@ Create a connection object in `/helpers` folder in `database.js`:
 const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize(
-  'test-db',    // database
-  'root',       // username
-  'passw0rd',   // password
+  'DATABASE_NAME',
+  'USERNAME',
+  'PASSWORD',
   {
     dialect: 'mysql',
     host: 'localhost',
     port: 3606
-  });
+  }
+);
 
 module.exports = sequelize;
+```
+Now we can define a model (e.g. for users):
+``` javascript
+const Sequelize = require('sequelize');
+
+const sequelize = require('./helpers/database');
+
+const User 
 ```
