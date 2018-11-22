@@ -268,7 +268,7 @@ user.save()
   });
 ```
 
-### Using Sequlize to access transactional databases
+### Using Sequlize to access transactional databases (REMOVE)
 Install `sequelize` and corresponding dialects:
 ``` bash
 npm install --save sequelize
@@ -303,3 +303,6 @@ const sequelize = require('./helpers/database');
 
 const User 
 ```
+### Adding MongoDB
+
+
