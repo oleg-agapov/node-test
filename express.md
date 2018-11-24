@@ -268,41 +268,9 @@ user.save()
   });
 ```
 
-### Using Sequlize to access transactional databases (REMOVE)
-Install `sequelize` and corresponding dialects:
+### Adding MongoDB through Mongoose
+Install Mongoose package first:
 ``` bash
-npm install --save sequelize
-
-npm install --save pg pg-hstore // PostgreSQL
-npm install --save mysql2       // MySQL
-npm install --save sqlite3      // SQLite
-npm install --save tedious      // MSSQL
+npm install --save mongoose
 ```
-Create a connection object in `/helpers` folder in `database.js`:
-``` javascript
-const Sequelize = require('sequelize');
-
-const sequelize = new Sequelize(
-  'DATABASE_NAME',
-  'USERNAME',
-  'PASSWORD',
-  {
-    dialect: 'mysql',
-    host: 'localhost',
-    port: 3606
-  }
-);
-
-module.exports = sequelize;
-```
-Now we can define a model (e.g. for users):
-``` javascript
-const Sequelize = require('sequelize');
-
-const sequelize = require('./helpers/database');
-
-const User 
-```
-### Adding MongoDB
-
 
