@@ -276,14 +276,14 @@ npm install --save mongoose
 To connect to MongoDB use connect method in `app.js`:
 ``` javascript
 mongoose
-  .connect('<MONGO_DB_CONNECTION_STRING>')
+  .connect(<MONGO_DB_CONNECTION_STRING>)
   .then(result => {
     // at this stage we are connected to DB
     app.listen(3000);
   })
 ```
 Now we can define data model. First of all define schema - key-value dictionary. Specify type of each field  (standard JavaScript data types) and any additional parameters from documentation. If you need to define custom methods create it under `schema.methods`. You need to use usual function syntax (not arrow function) in order to have access to schema through `this` keyword. Finally, export model of your data by passing model name and schema. An example of `User` model:
-``` javacript
+``` javascript
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
