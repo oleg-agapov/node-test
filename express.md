@@ -269,7 +269,7 @@ user.save()
 ```
 
 ### Adding MongoDB through Mongoose
-Install Mongoose package first:
+Install Mongoose package:
 ``` bash
 npm install --save mongoose
 ```
@@ -364,7 +364,7 @@ product.populate('userId').execPopulate();
 ```
 If you need to retrieve only specific fields you can use `select` method:
 ``` javascript
-User.findOne().select('name');
+User.findOne().select('name email');
 ```
 
 
