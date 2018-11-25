@@ -273,4 +273,102 @@ Install Mongoose package first:
 ``` bash
 npm install --save mongoose
 ```
+To connect to MongoDB use connect method in `app.js`:
+``` javascript
+mongoose
+  .connect('<MONGO_DB_CONNECTION_STRING>')
+  .then(result => {
+    // at this stage we are connected to DB
+    app.listen(3000);
+  })
+```
+Now we can define data model. First of all define schema - key-value dictionary. Specify type of each field  (standard JavaScript data types) and any additional parameters from documentation. If you need to define custom methods create it under `schema.methods`. You need to use usual function syntax (not arrow function) in order to have access to schema through `this` keyword. Finally, export model of your data by passing model name and schema. An example of `User` model:
+``` javacript
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema({
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  age: Number
+});
+
+userSchema.methods.customMethod = function() {
+  //...
+};
+
+module.exports = mongoose.model('User', userSchema);
+```
+To use this model in your controller you need simply import it, basic CRUD operations will be awailable out of the box. Almost every operation will return a Promise so you can chain it with `then().catch()` block:
+``` javascript
+// retrieve all users
+User.find()
+  .then(users => {
+    console.log(users);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+// find user by id
+User.findById(userId);
+
+// find user by name
+User.find({ 'name': 'Max' })
+
+// save user to DB
+const user = new User({ name: 'Max', email: 'max@test.com' });
+user.save()
+
+// find by id and update name
+User.findById(userId)
+  .then(user => {
+    user.name = 'Maximilian';
+    return user.save()
+  })
+  .then(updatedUser => {})
+
+// find by id and remove
+User.findByIdAndRemove(userId)
+```
+#### Adding reference field
+If you want to add a field which is a reference to another document in other collection you can define it like this:
+``` javascript
+const productSchema = new Schema({
+  ...
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  }
+});
+```
+In the example above `userId` field of `Product` model is a reference to `_id` field in `User` model.
+If you want to retrieve referenced `User` object during quering `Product` model you can chain `populate` method:
+``` javascript
+Product.findById(productId).populate('userId');
+```
+This method will extract corresponding user's document and attach it to `userId` field of the result.
+If you already have extracted product but you want to rerun the query to populate user you can do it like this:
+``` javascript
+const product = Product.findById(productId);
+
+product.populate('userId').execPopulate();
+```
+If you need to retrieve only specific fields you can use `select` method:
+``` javascript
+User.findOne().select('name');
+```
+
+
+
+
+
 
