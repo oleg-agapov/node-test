@@ -11,7 +11,6 @@ const app = express();
 
 app.listen(3000);
 ```
-
 Express is all about Middleware. Middleware executes before sending a request.
 To use middleware use need to register it with:
 ``` javascript
@@ -25,7 +24,6 @@ app.use((req, res, next) => {
   next(); // <-- this code will run the next middleware in chain
 });
 
-
 app.use((req, res, next) => {
   console.log('In the second middleware');
 });
@@ -37,7 +35,6 @@ res.send();
 Inside send you can put:
 * html code. In this case express will set header `Content-Type` for you as `text/html`
 * alternatively, most of other data will be returned as `json`
-
 ### Routing
 To add anew route you can use the following syntax:
 ``` javascript
@@ -48,13 +45,11 @@ app.use('/users', (req, res, next) => {
 app.use('/', anotherCallbackFunction);
 ```
 Here, "/" is a kind of a wildcard, meaning all routes matche it. So the order matters here. Also, if you will call next() finction in the first call instead of sending request you will fall back to "/" route callback.
-
 ### Redirecting
 To perform a redirect simply send the following responce:
 ``` javascript
 res.redirect('/');
 ```
-
 ### Parsing requests
 To access to the incoming requests data you need to do two things:
 1. to add a parser middleware
@@ -78,7 +73,6 @@ app.post(...); // will handle only POST requests
 
 app.use(...); // will handle all HTTP methods
 ```
-
 ### Express router
 To split the application into smaller parts we can utilize Express router.
 Create a folder /router and add a new file `home.js`. Put the following code there:
@@ -101,7 +95,6 @@ If you want to redirect user to another page just run:
 ``` javascript
 res.redirect('/');
 ```
-
 ### Filtering routes
 To handle only specific routes with specific handler you can use filters when registering a router like this:
 ``` javascript
@@ -162,7 +155,6 @@ To pass a parameters to you template simply add a dictionary with data to `rende
 ``` javascript
 res.render('index', {data: data});
 ```
-
 ### Dynamic routes and parameters
 To create dynamic route you need to add it to router like this:
 ``` javascript
@@ -175,41 +167,6 @@ const productId = req.params.productId
 If you want to access query parameters `?search=keyword` from URL you can use:
 ``` javascript
 const searchParam = req.query.search
-```
-
-### Barebone for data model
-
-In `/models` create a file with model of your data (e.g. for user):
-``` javascript
-const User = class {
-  constructor () {
-    // class constructor
-  }
-  
-  save () {
-    // save new oblect to DB
-  }
-  
-  static fetchAll () {
-    // get all oblects of this model
-  }
-  
-  static getById (id) {
-    // retrieve object by ID
-  }
-}
-
-exports.module = User
-```
-Then import the model to a controller and use:
-``` javascript
-const User = require('./models/user');
-
-const newUser = new User(email, name);
-
-newUser.save(); // to save newly created obkect to DB
-User.fetchAll(); // get all users
-User.getById(1); // get user with id = 1
 ```
 ### Adding MySQL to data models
 First install package with connection drivers for MySQL:
@@ -267,7 +224,6 @@ user.save()
     // handle error `err` here
   });
 ```
-
 ### Adding MongoDB through Mongoose
 Install Mongoose package:
 ``` bash
