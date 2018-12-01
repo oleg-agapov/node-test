@@ -362,7 +362,21 @@ app.use(
   })
 );
 ```
-
-
+To create and read a session values use `req.session` object in controller:
+``` javascript
+req.session.user = { name: 'Max' }
+```
+To delete a session use `destroy` method:
+``` javascript
+req.session.destroy((err) => {
+  res.redirect('/');
+});
+```
+If you want to get a callback after your session was saved successfully use:
+``` javascript
+req.session.save((err) => {
+  // callback is here
+}):
+```
 
 
