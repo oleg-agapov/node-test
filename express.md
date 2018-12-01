@@ -339,7 +339,29 @@ app.use(
   })
 );
 ```
+For now all sessions will be stored in memory. We can use MongoDB as a storage for session. Install additional package:
+``` bash
+npm install --save connect-mongodb-session
+```
+Add it to `app.js` and to sessions middleware:
+``` javascript
+const session = require('express-session');
+const MongoDBStore = require('connect-mongo-session')(session);
 
+const store = new MongoDBStore({
+  uri: <MONGO_DB_URI>,
+  collection: 'sessions'
+});
+
+app.use(
+  session({
+    secret: <SECRET_KEY>,
+    resave: false,
+    saveUninitialized: false,
+    store: store
+  })
+);
+```
 
 
 
