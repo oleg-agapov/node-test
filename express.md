@@ -322,7 +322,23 @@ If you need to retrieve only specific fields you can use `select` method:
 ``` javascript
 User.findOne().select('name email');
 ```
+### Sessions and cookies
+Install session helper for Express:
+``` bash
+npm install --save express-session
+```
+Now you can add this session functionality as middleware in `app.js`:
+``` javascript
+const session = require('express-session');
 
+app.use(
+  session({
+    secret: <SECRET_KEY>,
+    resave: false,            // 
+    saveUninitialized: false  // 
+  })
+);
+```
 
 
 
