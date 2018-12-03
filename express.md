@@ -368,5 +368,25 @@ req.session.save((err) => {
   // callback is here
 });
 ```
+### Handling cookies
+Install cookie parser package:
+``` bash
+npm install --save cookie-parser
+```
+Add it as a middleware:
+``` javascript
+var cookieParser = require('cookie-parser')
+
+app.use(cookieParser())
+```
+Now you have global `cookie` object in requests:
+``` javascript
+
+// Cookie: name=tj
+req.cookies.name
+// => "tj"
+
+```
+
 
 
