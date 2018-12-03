@@ -366,7 +366,7 @@ If you want to get a callback after your session was saved successfully (for exa
 ``` javascript
 req.session.save((err) => {
   // callback is here
-}):
+});
 ```
 
 
