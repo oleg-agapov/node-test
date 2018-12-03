@@ -400,6 +400,10 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true
+  },
+  password: {
+    type: String,
+    required: true
   }
 });
 
@@ -407,7 +411,12 @@ module.exports = mongoose.model('User', userSchema);
 ```
 
 ### Signup
+Create a controller to handle submitting of new user credentials:
+``` javascript
+const signupUser = (req, res, next) => {
 
+};
+```
 ### Login
 
 
