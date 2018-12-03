@@ -322,28 +322,17 @@ If you need to retrieve only specific fields you can use `select` method:
 ``` javascript
 User.findOne().select('name email');
 ```
-### Sessions and cookies
+### Sessions
 Install session helper for Express:
 ``` bash
 npm install --save express-session
 ```
-Now you can add this session functionality as middleware in `app.js`:
-``` javascript
-const session = require('express-session');
-
-app.use(
-  session({
-    secret: <SECRET_KEY>,
-    resave: false,            // 
-    saveUninitialized: false  // 
-  })
-);
-```
-For now all sessions will be stored in memory. We can use MongoDB as a storage for session. Install additional package:
+To store the sessions not in memory but persist them in MongoDB install additionally:
 ``` bash
 npm install --save connect-mongodb-session
 ```
-Add it to `app.js` and to sessions middleware:
+Now you need to add sessions functionality as a middleware in `app.js`:
+
 ``` javascript
 const session = require('express-session');
 const MongoDBStore = require('connect-mongo-session')(session);
@@ -364,7 +353,8 @@ app.use(
 ```
 To create and read a session values use `req.session` object in controller:
 ``` javascript
-req.session.user = { name: 'Max' }
+req.session.user = { name: 'Max' }  // creating of user object
+console.log(req.session)            // outputing session content to console
 ```
 To delete a session use `destroy` method:
 ``` javascript
@@ -372,7 +362,7 @@ req.session.destroy((err) => {
   res.redirect('/');
 });
 ```
-If you want to get a callback after your session was saved successfully use:
+If you want to get a callback after your session was saved successfully (for example if you need to make sure that you render your view _after_ the session was deleted) use:
 ``` javascript
 req.session.save((err) => {
   // callback is here
