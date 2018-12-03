@@ -168,6 +168,7 @@ If you want to access query parameters `?search=keyword` from URL you can use:
 ``` javascript
 const searchParam = req.query.search
 ```
+## Databases
 ### Adding MySQL to data models
 First install package with connection drivers for MySQL:
 ``` bash
