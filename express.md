@@ -387,6 +387,26 @@ To read a cookie use `req.cookies` object:
 ``` javascript
 req.cookies.name  // => "Max"
 ```
+## Authentication 
+### Prerequisites
+First you should have a `User` model:
+``` javascript
+onst mongoose = require('mongoose');
 
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema({
+  email: {
+    type: String,
+    required: true
+  }
+});
+
+module.exports = mongoose.model('User', userSchema);
+```
+
+### Signup
+
+### Login
 
 
