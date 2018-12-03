@@ -369,7 +369,11 @@ req.session.save((err) => {
 });
 ```
 ### Handling cookies
-Install cookie parser package:
+To set a cookie use response header:
+```
+res.append('Set-Cookie', 'name=Max; Path=/;');
+```
+To read cookies in request use cookie parser package:
 ``` bash
 npm install --save cookie-parser
 ```
@@ -381,11 +385,7 @@ app.use(cookieParser())
 ```
 Now you have global `cookie` object in requests:
 ``` javascript
-
-// Cookie: name=tj
-req.cookies.name
-// => "tj"
-
+req.cookies.name  // => "Max"
 ```
 
 
