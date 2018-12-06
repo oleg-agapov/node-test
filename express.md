@@ -406,6 +406,10 @@ const userSchema = new Schema({
     required: true
   }
 });
+Install:
+```
+bscrypt flash
+```
 
 module.exports = mongoose.model('User', userSchema);
 ```
